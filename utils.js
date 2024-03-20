@@ -1,10 +1,11 @@
-const { BadRequestError } = require("./expressError");
+"use strict";
 
+const { BadRequestError } = require("./expressError");
 
 /** Convert strNums like ["1","2","3"] to [1, 2, 3]. */
 
+// stick with function declaration pattern unless simplifying a callback
 const convertStrNums = (strNums) => {
-
   const nums = [];
   for (let strNum of strNums) {
     if (isNaN(parseFloat(strNum))) {
@@ -12,6 +13,7 @@ const convertStrNums = (strNums) => {
     }
     nums.push(parseFloat(strNum));
   }
+  return nums;
 };
 
 

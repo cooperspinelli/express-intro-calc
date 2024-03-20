@@ -1,3 +1,4 @@
+"use strict";
 /** Simple demo Express app. */
 
 const express = require("express");
@@ -18,6 +19,7 @@ app.use(express.urlencoded());
 app.get("/mean", function (req, res) {
 
   if (req.query.nums === undefined) {
+    // Use MISSING here
     throw new BadRequestError('Nums are required.');
   }
 
@@ -53,7 +55,8 @@ app.get("/mode", function (req, res) {
     throw new BadRequestError('Nums are required.');
   }
 
-  const inputNums = convertStrNums(req.query.nums.split(','));;
+  const inputNums = convertStrNums(req.query.nums.split(','));
+  console.log(inputNums);
   const modeVal = findMode(inputNums);
   return res.json({
     operation: "mode",
